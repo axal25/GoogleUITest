@@ -16,7 +16,7 @@ Java (11), Maven (3.6.3), Selenium
 
 #### How to run
 
-1. To run the tests
+1. To run the tests  
    `mvn clean test`
 2. To test with self-provided Chrome Driver  
    `mvn test -Dmvn.webdriver.chrome.driver="path/to/chromedriver"`  
@@ -34,7 +34,7 @@ Java (11), Maven (3.6.3), Selenium
 2. I tested it only on Ubuntu with Chrome.
 3. Main test class is  
    `src/test/java/main/google/web/driver/custom/GoogleCustomWebDriverTest.java`
-4. There are also smoke test class for browsers other than Chrome defined in  
+4. There are also smoke test classes for browsers other than Chrome defined in  
    `src/test/resources/json/browsers.json`.  
    Browser smoke class testing on google.com  
    `src/test/java/main/google/web/driver/selenium/GoogleSeleniumJupiterWebDriverTest.java`  
