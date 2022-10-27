@@ -15,15 +15,15 @@ public class AssertionNoAsserts extends AssertionFailedError {
         return todo;
     }
 
-    public static void fail(String todo) {
+    static void fail(String todo) {
         throw new AssertionNoAsserts(todo);
     }
 
     @Override
     public String toString() {
         return "AssertionNoAsserts{\n" +
-                "\tmessage='" + super.getMessage() + "'," +
-                "\ttodo='" + todo + "'\n" +
+                "\tmessage=\"" + super.getMessage() + "\",\n" +
+                "\ttodo=\"" + todo + "\"\n" +
                 "}";
     }
 }

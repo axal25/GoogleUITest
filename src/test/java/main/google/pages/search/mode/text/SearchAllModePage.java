@@ -1,4 +1,4 @@
-package main.google.pages.search.text;
+package main.google.pages.search.mode.text;
 
 import com.google.common.collect.ImmutableList;
 import org.openqa.selenium.NoSuchElementException;

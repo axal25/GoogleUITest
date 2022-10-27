@@ -1,6 +1,5 @@
 package main;
 
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Constants {
@@ -12,19 +11,22 @@ public class Constants {
     }
 
     public static final long TIME_OUT_SECONDS = 10L;
-    public static class JvmArgs {
-        public static class KeyNames {
-            public static class DriverLocations {
-                public static final String WEB_DRIVER_CHROME = "jvm.arg.webdriver.chrome.driver";
+
+    static class JvmArgs {
+        static class KeyNames {
+            static class DriverLocations {
+                static final String WEB_DRIVER_CHROME = "jvm.arg.webdriver.chrome.driver";
             }
         }
     }
-    public static class EnvVars {
-        public static class KeyNames {
-            public static class DriverLocations {
-                public static final String WEB_DRIVER_CHROME = "webdriver.chrome.driver";
+
+    static class EnvVars {
+        static class KeyNames {
+            static class DriverLocations {
+                static final String WEB_DRIVER_CHROME = "webdriver.chrome.driver";
             }
-            public static final String WEB_DRIVER_CHROME_WHITE_LISTED_IPS = "webdriver.chrome.whitelistedIps";
+
+            static final String WEB_DRIVER_CHROME_WHITE_LISTED_IPS = "webdriver.chrome.whitelistedIps";
         }
     }
 }

@@ -5,17 +5,17 @@ import io.github.bonigarcia.seljup.EnabledIfBrowserAvailable;
 import main.Constants;
 import main.EnvVarSetter;
 import main.google.pages.home.HomePage;
-import main.google.pages.search.text.SearchAllModeConstants;
-import main.google.pages.search.text.SearchAllModeWithMoreModesMenuOpenedPage;
+import main.google.pages.search.mode.text.SearchAllModeConstants;
+import main.google.pages.search.mode.text.SearchAllModeWithMoreModesMenuOpenedPage;
 import main.google.pages.terms.and.conditions.TermsAndConditionsPage;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import utils.AssertionUtils;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static utils.AssertionUtils.assertContainsIgnoreCase;
 
 @EnabledIfBrowserAvailable(Browser.CHROME)
 @ExtendWith(AssertionNoAssertsExceptionHandler.class)
@@ -82,37 +82,6 @@ public class GoogleCustomWebDriverTest {
         }
 
         @Test
-        @Order(999)
-        void searchText_completeKeyInput_submit_redundantLengthyOverhead() {
-            String inputQueryText = "Input query";
-
-            new HomePage(webDriver).submitKeysToSearchBar(inputQueryText);
-
-            SearchAllModeWithMoreModesMenuOpenedPage searchAllModePage = new SearchAllModeWithMoreModesMenuOpenedPage(webDriver);
-            assertEquals(inputQueryText, searchAllModePage.getSearchBarTextValue());
-
-            assertTrue(searchAllModePage.isSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_ALL));
-            assertFalse(searchAllModePage.isSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_IMAGE));
-            assertFalse(searchAllModePage.isSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_VIDEO));
-            assertFalse(searchAllModePage.isSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_MAPS));
-            assertFalse(searchAllModePage.isSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_NEWS));
-            assertFalse(searchAllModePage.isSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_SHOPPING));
-            assertFalse(searchAllModePage.isSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_BOOKS));
-            assertFalse(searchAllModePage.isSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_FINANCE));
-            assertFalse(searchAllModePage.isSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_FLIGHTS));
-
-            assertFalse(searchAllModePage.isNotSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_ALL));
-            assertTrue(searchAllModePage.isNotSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_IMAGE));
-            assertTrue(searchAllModePage.isNotSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_VIDEO));
-            assertTrue(searchAllModePage.isNotSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_MAPS));
-            assertTrue(searchAllModePage.isNotSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_NEWS));
-            assertTrue(searchAllModePage.isNotSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_SHOPPING));
-            assertTrue(searchAllModePage.isNotSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_BOOKS));
-            assertTrue(searchAllModePage.isNotSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_FINANCE));
-            assertTrue(searchAllModePage.isNotSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_FLIGHTS));
-        }
-
-        @Test
         @Order(1)
         void searchText_completeKeyInput_submit() {
             String inputQueryText = "Input query";
@@ -135,7 +104,7 @@ public class GoogleCustomWebDriverTest {
 
             SearchAllModeWithMoreModesMenuOpenedPage searchAllModePage = new SearchAllModeWithMoreModesMenuOpenedPage(webDriver);
 
-            AssertionUtils.assertContainsIgnoreCase(searchAllModePage.getSearchBarTextValue(), inputQueryText);
+            assertContainsIgnoreCase(searchAllModePage.getSearchBarTextValue(), inputQueryText);
 
             assertTrue(searchAllModePage.isSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_ALL));
             assertFalse(searchAllModePage.isNotSelectedSearchMode(SearchAllModeConstants.SEARCH_MODE_ALL));
