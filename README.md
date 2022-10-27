@@ -40,3 +40,10 @@ Java (11), Maven (3.6.3), Selenium
    `src/test/java/main/google/web/driver/selenium/GoogleSeleniumJupiterWebDriverTest.java`  
    Browser smoke class testing on local (included page)  
    `src/test/java/main/helloWorld/HelloWorldTest.java`
+5. I've used Exception Handlers for cases where I judged it would be acceptable for them to fail.   
+   For example I couldn't
+   get FireFox or any other browser to work in allotted time but I wanted to demonstrate I know how to use mechanism of
+   Test Templates.  
+   Second major time where I used handler was to definitely developer know that there is a need for additional assertion
+   in future but the current form of test passes and simply removing handler from the class would show where additional
+   assertions are needed.
