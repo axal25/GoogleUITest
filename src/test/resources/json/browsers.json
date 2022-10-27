@@ -1,0 +1,24 @@
+{
+  "browsers": [
+    [
+      {
+        "type": "chrome"
+      }
+    ],
+    [
+      {
+        "type": "firefox"
+      }
+    ],
+    [
+      {
+        "type": "safari"
+      }
+    ],
+    [
+      {
+        "type": "edge"
+      }
+    ]
+  ]
+}
